@@ -18,7 +18,7 @@ export function TopNav() {
         </div>
 
         <a
-          href="https://github.com/heyrapto/kaido"
+          href="https://github.com/IsruAlpha/Brio"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="View source on GitHub"

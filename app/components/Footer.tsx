@@ -15,14 +15,10 @@ type Social = {
 const SOCIALS: Social[] = [
   { label: "X", href: "https://x.com/IFirew91900", Icon: FaXTwitter },
   // { label: "LinkedIn", href: "https://www.linkedin.com/in/caleb-kalejaiye-5a0730403/", Icon: FaLinkedinIn },
-  {
-    label: "Facebook",
-    href: "https://facebook.com/heyrapto",
-    Icon: FaFacebookF,
-  },
+
   {
     label: "Repository",
-    href: "https://github.com/heyrapto/kaido",
+    href: "https://github.com/IsruAlpha/Brio",
     Icon: FaGithub,
   },
 ];

@@ -2,7 +2,7 @@
 
 > *names worth keeping*
 
-Stop naming it **TechBoostifyly.** Kaido is a Next.js + Gemini name generator that helps you find a tasteful, available `.com` for your project — fast.
+Stop naming it **ChatGPT Generated names.** Brio is a Next.js + groq name generator that helps you find a tasteful, available `.com` for your project — fast.
 
 Describe an idea, paste a competitor, or drop a seed word; Kaido proposes 8–12 candidates, runs them through a quality filter, then checks `.com` availability in parallel. If fewer than 3 are free, it retries with new prompts until it surfaces a usable shortlist.
 
@@ -11,10 +11,10 @@ Describe an idea, paste a competitor, or drop a seed word; Kaido proposes 8–12
 ## Quickstart
 
 ```bash
-git clone https://github.com/heyrapto/kaido.git
+git clone https://github.com/IsruAlpha/Brio.git
 cd kaido
 npm install
-cp .env.local.example .env.local   # add your GEMINI_API_KEY
+cp .env.local.example .env.local   # add your GROQ_API_KEY
 npm run dev
 ```
 
@@ -24,7 +24,7 @@ Open <http://localhost:3000>.
 
 | Var | Required | Where to get it |
 |---|---|---|
-| `GEMINI_API_KEY` | yes | <https://aistudio.google.com/apikey> |
+| `GROQ_API_KEY` | yes | <https://console.groq.com/keys> |
 
 That's it. Domain availability uses the free Verisign **RDAP** service — no key, no signup.
 
@@ -33,7 +33,7 @@ That's it. Domain availability uses the free Verisign **RDAP** service — no ke
 ## How a search runs
 
 ```
-input ──▶ /api/generate ──▶ Gemini (8 candidates)
+input ──▶ /api/generate ──▶ Groq (8 candidates)
                        └─▶ creative variants  (reverse, vowel-drop, suffix, scramble)
                        └─▶ niche corpus       (obscure Pokémon, mythology, anime, gems)
                        └─▶ invented compounds (prefix + suffix syllable bank)
@@ -67,7 +67,7 @@ The compound generator is the highest-leverage source. Squatters can't pre-regis
 ```
 app/
 ├── api/
-│   ├── generate/route.ts        Gemini + variants + corpus + invented
+│   ├── generate/route.ts        Groq + variants + corpus + invented
 │   └── availability/route.ts    RDAP availability check
 ├── components/
 │   ├── SearchInput.tsx          Tabbed input (idea / competitor / seed)
@@ -125,6 +125,6 @@ Everything brand-related lives in `app/globals.css` as CSS variables; component 
 
 ## Made by
 
-Caleb Kalejaiye — [x.com/heyrapto](https://x.com/heyrapto) · [github](https://github.com/heyrapto)
+Israel Firew — [x.com/IFirew91900](https://x.com/IFirew919000) · [github](https://github.com/IsruAlpha)
 
-Source: <https://github.com/heyrapto/kaido>
+Source: <https://github.com/IsruAlpha/Brio>

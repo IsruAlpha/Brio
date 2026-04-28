@@ -5,8 +5,6 @@ import { useKaidoStore } from "@/app/store/kaido";
 import type { QueryType } from "@/app/lib/types";
 import { toast } from "@/app/store/toast";
 import { modal } from "@/app/store/modal";
-import { generateNames } from "@/app/lib/gemini";
-import { generateNamesViaPuter } from "@/app/lib/puter";
 import { augmentNames } from "@/app/lib/augment";
 
 const MAX_ATTEMPTS = 5;
@@ -18,28 +16,24 @@ type AvailabilityResponse = {
   error?: string;
 };
 
-type Source = "gemini" | "grok";
+type GenerateResponse = {
+  names: string[];
+  error?: string;
+};
 
 async function requestNames(
   input: string,
   type: QueryType,
   exclude: string[],
-): Promise<{ names: string[]; source: Source }> {
-  let primaryErr: unknown = null;
-  try {
-    const llm = await generateNames(input, type, exclude);
-    if (llm.length > 0) {
-      return { names: augmentNames(input, type, exclude, llm), source: "gemini" };
-    }
-  } catch (err) {
-    primaryErr = err;
-  }
-  try {
-    const llm = await generateNamesViaPuter(input, type, exclude);
-    return { names: augmentNames(input, type, exclude, llm), source: "grok" };
-  } catch (fallbackErr) {
-    throw primaryErr ?? fallbackErr;
-  }
+): Promise<string[]> {
+  const res = await fetch("/api/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ input, type, exclude }),
+  });
+  const data = (await res.json()) as GenerateResponse;
+  if (!res.ok) throw new Error(data.error ?? "Failed to generate names");
+  return augmentNames(input, type, exclude, data.names ?? []);
 }
 
 async function requestAvailability(
@@ -73,7 +67,6 @@ export function useNameSearch() {
     try {
       let availableCount = 0;
       let attempt = 0;
-      let notifiedPuterFallback = false;
 
       while (attempt < MAX_ATTEMPTS && availableCount < TARGET_AVAILABLE) {
         // After N rounds with not enough availability, ask before burning more
@@ -95,19 +88,7 @@ export function useNameSearch() {
         attempt += 1;
 
         const exclude = useKaidoStore.getState().allTried;
-        const { names, source } = await requestNames(
-          query,
-          state.queryType,
-          exclude,
-        );
-
-        if (source === "grok" && !notifiedPuterFallback) {
-          notifiedPuterFallback = true;
-          toast.info(
-            "Switched to Grok fallback",
-            "Gemini-via-Puter failed — using Grok-via-Puter for this round.",
-          );
-        }
+        const names = await requestNames(query, state.queryType, exclude);
 
         if (names.length === 0) {
           if (attempt === 1) {

@@ -9,9 +9,8 @@ const MAX_NAMES = 12;
 const CORPUS_PICKS = 2;
 const INVENTED_PICKS = 3;
 
-// Same blending pipeline /api/generate used to do, now client-side so the
-// LLM call (Gemini-via-Puter, Grok-via-Puter) and the augmentation can run
-// in the same place without a server round-trip.
+// Keep the augmentation client-side so we can blend Gemini output with
+// deterministic variants/corpus picks before checking availability.
 export function augmentNames(
   input: string,
   type: QueryType,

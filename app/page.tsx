@@ -25,13 +25,13 @@ export default function Page() {
           <HeroBadge />
 
           <h1 className="mt-8 font-[family-name:var(--font-display)] text-[64px] font-medium leading-[1.04] tracking-[-0.02em] text-[color:var(--text)]">
-            Stop naming it<br />
-            <em className="italic text-[color:var(--accent)]">TechBoostifyly.</em>
+            Stop naming your project <br />
+            <em className="italic text-[color:var(--accent)]">ChatGPT names.</em>
           </h1>
 
           <p className="mt-6 max-w-[560px] text-[14px] leading-[1.7] text-[color:var(--muted)]">
             Describe your idea, drop a competitor, or paste a name you like.
-            Kaido finds you something good — then checks if it&apos;s actually
+            Brio finds you something good names — then checks if it&apos;s actually
             free in under three seconds.
           </p>
 

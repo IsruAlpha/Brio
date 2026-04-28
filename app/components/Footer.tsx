@@ -13,7 +13,7 @@ type Social = {
 };
 
 const SOCIALS: Social[] = [
-  { label: "X", href: "https://x.com/heyrapto", Icon: FaXTwitter },
+  { label: "X", href: "https://x.com/IFirew91900", Icon: FaXTwitter },
   // { label: "LinkedIn", href: "https://www.linkedin.com/in/caleb-kalejaiye-5a0730403/", Icon: FaLinkedinIn },
   {
     label: "Facebook",
@@ -34,12 +34,12 @@ export function Footer() {
         <span className="font-[family-name:var(--font-display)] text-[12px] italic text-[color:var(--muted)]">
           made by{" "}
           <a
-            href="https://x.com/heyrapto"
+            href="https://x.com/IFirew91900"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[color:var(--text)] transition-colors hover:text-[color:var(--accent)]"
           >
-            Rapto
+            Israel
           </a>
         </span>
         <ul className="flex items-center gap-[14px]">

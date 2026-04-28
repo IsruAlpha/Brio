@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/app/components/ui/Toaster";
 import { Modal } from "@/app/components/ui/Modal";
@@ -23,7 +22,6 @@ export default function RootLayout({
         <Toaster />
         <Modal />
         <GeneratingModal />
-        <Script src="https://js.puter.com/v2/" strategy="afterInteractive" />
       </body>
     </html>
   );

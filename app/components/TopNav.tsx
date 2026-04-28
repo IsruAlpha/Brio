@@ -8,7 +8,7 @@ export function TopNav() {
       <div className="mx-auto flex h-[64px] max-w-[1240px] items-center justify-between px-8">
         <a href="#" aria-label="kaido" className="flex items-center gap-2">
           <span className="font-[family-name:var(--font-display)] text-[18px] font-bold italic tracking-[-0.02em] text-[color:var(--text)]">
-            kaido<span className="text-[color:var(--accent)]">.</span>
+            Brio<span className="text-[color:var(--accent)]">.</span>
           </span>
         </a>
 

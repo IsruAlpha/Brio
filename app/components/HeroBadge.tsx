@@ -4,7 +4,7 @@ export function HeroBadge() {
   return (
     <div className="inline-flex items-stretch overflow-hidden rounded-[8px] border border-[color:var(--border)] bg-[color:var(--surface)] text-[12px]">
       <span className="flex items-center px-[14px] py-[7px] text-[color:var(--text)]">
-        Introducing kaido
+        Introducing Brio
       </span>
       <a
         href="#search"
